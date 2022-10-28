@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Tomas Consoli">
+    <link rel="stylesheet" href="~/css/lib/bootstrap/dist/css/bootstrap.min.css">
+    <script src="~/css/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <title>Listado cadetes</title>
+</head>
+
+<body>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Telefono</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                string nombreArchivo = "Cadetes.csv";
+                foreach (var linea in File.ReadAllLines(nombreArchivo))
+                {
+                    if (linea != "" && linea != "ID;Nombre;Apellido;Telefono")
+                    {
+                        var informacion = linea.Split(";");
+                        <tr>
+                            <td>@informacion[0]</td>
+                            <td>@informacion[1]</td>
+                            <td>@informacion[2]</td>
+                            <td>@informacion[3]</td>
+                            <td><a href='@("bajaCadete?idCadete=" + informacion[0].ToString())' class="link-danger">Eliminar cadete</a></td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</body>
+
+</html>
