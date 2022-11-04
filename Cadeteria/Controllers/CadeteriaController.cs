@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.IO;
+using Cadeteria.Models;
 
 namespace Cadeteria.Controllers
 {
@@ -41,9 +42,11 @@ namespace Cadeteria.Controllers
             return View();
         }
 
-        public IActionResult listarCadetes()
+        public IActionResult Index()
         {
-            return View();
+            List<Cadete> listadoCadetes = new List<Cadete>();
+            listadoCadetes = HelperDeArchivos.leerCadetes();
+            return View(listadoCadetes);
         }
 
         [HttpGet]

@@ -1,3 +1,4 @@
+@model List<Cadete>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -24,20 +25,16 @@
         </thead>
         <tbody>
             @{
-                string nombreArchivo = "Cadetes.csv";
-                foreach (var linea in File.ReadAllLines(nombreArchivo))
+                foreach (var cadete in @Model)
                 {
-                    if (linea != "" && linea != "ID;Nombre;Apellido;Telefono")
-                    {
-                        var informacion = linea.Split(";");
-                        <tr>
-                            <td>@informacion[0]</td>
-                            <td>@informacion[1]</td>
-                            <td>@informacion[2]</td>
-                            <td>@informacion[3]</td>
-                            <td><a href='@("bajaCadete?idCadete=" + informacion[0].ToString())' class="link-danger">Eliminar cadete</a></td>
-                        </tr>
-                    }
+                    var nombre = @cadete.Nombre.Split(" ");
+                    <tr>
+                        <td>@cadete.Id</td>
+                        <td>@nombre[0]</td>
+                        <td>@nombre[1]</td>
+                        <td>@cadete.Telefono</td>
+                        <td><a href='@("bajaCadete?idCadete=" + cadete.Id.ToString())' class="link-danger">Eliminar cadete</a></td>
+                    </tr>
                 }
             }
         </tbody>
