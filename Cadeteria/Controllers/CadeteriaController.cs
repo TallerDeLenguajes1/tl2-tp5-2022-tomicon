@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.IO;
 using Cadeteria.Models;
+using Cadeteria.ViewModels;
 
 namespace Cadeteria.Controllers
 {
@@ -46,7 +47,14 @@ namespace Cadeteria.Controllers
         {
             List<Cadete> listadoCadetes = new List<Cadete>();
             listadoCadetes = HelperDeArchivos.leerCadetes();
-            return View(listadoCadetes);
+            List<CadeteViewModel> listadoCadeteViewModels = new List<CadeteViewModel>();
+            foreach (var item in listadoCadetes)
+            {
+                var cadeteViewModel = new CadeteViewModel();
+                cadeteViewModel = CadeteMapper.mappearACadeteViewModel(item);
+                listadoCadeteViewModels.Add(cadeteViewModel);
+            }
+            return View(listadoCadeteViewModels);
         }
 
         [HttpGet]
