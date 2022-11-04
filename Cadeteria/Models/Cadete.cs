@@ -6,7 +6,7 @@ public class Cadete : Persona
 
     public List<Pedido> ListadoPedidos1 { get => ListadoPedidos; set => ListadoPedidos = value; }
 
-    public Cadete(int id, string nombre, string direccion, string telefono) : base(id, nombre, direccion, telefono)
+    public Cadete(string nombre, string direccion, string telefono) : base(nombre, direccion, telefono)
     {
         ListadoPedidos1= new List<Pedido>();
     }

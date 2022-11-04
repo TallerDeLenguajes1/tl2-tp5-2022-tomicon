@@ -14,7 +14,7 @@ public class Pedido
     {
         Nro = ++autonum;
         Obs = obs;
-        usuario = new Cliente(id, nombre, direccion, telefono, datosDirec);
+        usuario = new Cliente(nombre, direccion, telefono, datosDirec);
         Estado = estado;
     }
 

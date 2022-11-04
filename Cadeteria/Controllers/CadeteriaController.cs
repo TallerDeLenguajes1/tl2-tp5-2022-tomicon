@@ -22,9 +22,10 @@ namespace Cadeteria.Controllers
         }
 
         [HttpPost]
-        public IActionResult AltaCadete(int idCadete, string nombCadete, string apeCadete, string telCadete)
+        public IActionResult AltaCadete(string nombCadete, string apeCadete, string telCadete)
         {
-            string linea= $"{idCadete};{nombCadete};{apeCadete};{telCadete}";
+            Cadete nuevo = new Cadete(" ", " ", " "); //solo quiero obtener el id autonumerico
+            string linea= $"{nuevo.Id};{nombCadete};{apeCadete};{telCadete}";
             string nombreArchivo= "Cadetes.csv";
             bool archivoExiste= System.IO.File.Exists(nombreArchivo);
             StreamWriter escritor = System.IO.File.AppendText(nombreArchivo);
@@ -61,6 +62,18 @@ namespace Cadeteria.Controllers
         public IActionResult bajaCadete(string idCadete)
         {
             HelperDeArchivos.eliminarCadete(idCadete);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult cargarPedido()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AltaPedido()
+        {
+
             return RedirectToAction("Index");
         }
     }

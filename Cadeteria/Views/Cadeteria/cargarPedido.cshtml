@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Tomás Consoli">
+    <link rel="stylesheet" href="">
+    <title>Cargar Pedido</title>
+</head>
+<body>
+    <header>
+        <h1>Carga de Pedidos</h1>
+    </header>
+    <main>
+        <form asp-controller="Cadeteria" asp-action="AltaPedido" method="POST">
+            <label for="nombCadete">Nombre: </label>
+            <input type="text" id="nombUsuario" name="nombUsuario" placeholder="Nombre" required>
+            <label for="apeUsuario">Apellido: </label>
+            <input type="text" id="apeUsuario" name="apeUsuario" placeholder="Apellido" required>
+            <label for="telUsuario">Telefono: </label>
+            <input type="tel" id="telUsuario" name="telUsuario" placeholder="3811111111" required>
+            <label for="direcUsuario">Direccion: </label>
+            <input type="text" id="direcUsuario" name="apeUsuario" placeholder="Av Mate de Luna 1234" required>
+            <label for="datosDirec">Datos extra de la Direccion: </label>
+            <textarea name="datosDirec" id="datosDirec" cols="30" rows="10"></textarea>
+            <input type="submit" value="Cargar Pedido">
+        </form>
+    </main>
+</body>
+</html>
+
+@* nombre, direccion, telefono, datosDirec *@

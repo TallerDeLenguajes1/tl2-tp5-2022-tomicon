@@ -3,21 +3,20 @@ namespace Cadeteria.Models;
 
 public class Persona
 {
+    protected static int autonum= 0;
     protected int id;
     protected string nombre;
     protected string direccion;
     protected string telefono;
 
     public Persona(){
-        this.Id= 0;
-        this.Direccion="sin direccion";
-        this.Nombre="Sin nombre";
-        this.Telefono="Sin telefono";
+
     }
 
-    public Persona(int id, string nombre, string direccion, string telefono)
+    public Persona(string nombre, string direccion, string telefono)
     {
-        this.Id = id;
+        autonum++;
+        this.Id = autonum;
         this.Nombre = nombre;
         this.Direccion = direccion;
         this.Telefono = telefono;

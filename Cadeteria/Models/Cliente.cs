@@ -4,7 +4,7 @@ public class Cliente : Persona
 {
     private string datosReferenciaDireccion;
 
-    public Cliente(int id, string nombre, string direccion, string telefono, string datosDirec) : base(id, nombre, direccion, telefono)
+    public Cliente(string nombre, string direccion, string telefono, string datosDirec) : base(nombre, direccion, telefono)
     {
         this.DatosReferenciaDireccion= datosDirec;
     }
