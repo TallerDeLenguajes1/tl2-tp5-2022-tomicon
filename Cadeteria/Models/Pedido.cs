@@ -9,19 +9,22 @@ public class Pedido
     private string obs;
     private Cliente usuario;
     private Estados estado;
+    private int idCadete;
 
-    public Pedido(string obs, Estados estado, int id, string nombre, string direccion, string telefono, string datosDirec)
+    public Pedido(string obs, Estados estado, int idCadete, string nombre, string direccion, string telefono, string datosDirec)
     {
         Nro = ++autonum;
         Obs = obs;
         usuario = new Cliente(nombre, direccion, telefono, datosDirec);
         Estado = estado;
+        IdCadete= idCadete;
     }
 
     public Estados Estado { get => estado; set => estado = value; }
     public Cliente Usuario { get => usuario; set => usuario = value; }
     public string Obs { get => obs; set => obs = value; }
     public int Nro { get => nro; set => nro = value; }
+    public int IdCadete { get => idCadete; set => idCadete = value; }
 
     public void cambiarEstado(Estados nuevo){
         this.Estado= nuevo;

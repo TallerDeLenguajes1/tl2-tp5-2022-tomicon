@@ -5,115 +5,50 @@ public class Cadeteria
     private string nombre;
     private string telefono;
     private List<Cadete> listaCadetes;
+    private List<Pedido> listaPedidos;
+
+    public List<Pedido> ListaPedidos { get => listaPedidos; set => listaPedidos = value; }
+    public List<Cadete> ListaCadetes { get => listaCadetes; set => listaCadetes = value; }
 
     public Cadeteria(string nombre, string telefono)
     {
         this.nombre = nombre;
         this.telefono = telefono;
-        this.listaCadetes = new List<Cadete>();
+        this.ListaCadetes = new List<Cadete>();
     }
 
     public void agregarCadete(string nombre, string direccion, string telefono)
     {
         Cadete nuevo= new Cadete(nombre, direccion, telefono);
-        listaCadetes.Add(nuevo);
+        ListaCadetes.Add(nuevo);
     }
 
-    public void asignarPedidoACadete(Pedido pedido, int idCadete){
-        bool bandera= true;
-        foreach (var repartidor in this.listaCadetes)
+    public void asignarPedidoACadete(int nro)
+    {
+        Random r = new Random();
+        int indice = ListaCadetes.Count();
+        int idCadete = ListaCadetes[indice].Id;
+        
+        foreach (var encargo in ListaPedidos)
         {
-            if (repartidor.Id== idCadete)
+            if (encargo.Nro == nro)
             {
-                repartidor.agregarPedido(pedido);
-                bandera= false;
-            }
-        }
-        if (!bandera)
-        {
-            System.Console.WriteLine("El pedido se asignó correctamente");
-        } else
-        {
-            System.Console.WriteLine("No se pudo agregar el pedido al cadete");
-        }
-    }
-
-    public void removerPedidoDeCadete(Pedido pedido, int idCadete){
-        bool bandera= true;
-        foreach (var repartidor in this.listaCadetes)
-        {
-            if (repartidor.Id == idCadete)
-            {
-                repartidor.eliminarPedido(pedido);
-            }
-        }
-        if (!bandera)
-        {
-            System.Console.WriteLine("El pedido se elimino correctamente");
-        } else
-        {
-            System.Console.WriteLine("No se pudo eliminar el pedido al cadete");
-        }
-    }
-
-    public void cambiarPedidoDeCadete(Pedido pedido, int idCadeteEntrega, int idCadeteNoEntrega){
-        foreach (var repartidor in listaCadetes)
-        {
-            if (repartidor.Id==idCadeteNoEntrega)
-            {
-                repartidor.eliminarPedido(pedido);
-            }
-            if (repartidor.Id==idCadeteEntrega)
-            {
-                repartidor.agregarPedido(pedido);
+                encargo.IdCadete= idCadete;
             }
         }
     }
 
-    public void cadeteComenzoEntrega(int idCadete, Pedido pedido){
-        foreach (var repartidor in this.listaCadetes)
-        {
-            if (repartidor.Id == idCadete)
-            {
-                repartidor.comenzarEntrega(pedido);
-            }
-        }
+    public void agregarPedido(Pedido pedido){
+        this.ListaPedidos.Add(pedido);
     }
 
-    public void cadeteRealizoEntrega(int idCadete, Pedido pedido){
-        foreach (var repartidor in this.listaCadetes)
+    public void cambiarPedidoDeCadete(int nro, int idCadete){
+        foreach (var pedido in ListaPedidos)
         {
-            if (repartidor.Id == idCadete)
+            if (pedido.Nro == nro)
             {
-                repartidor.entregarPedido(pedido);
+                pedido.IdCadete = idCadete;
             }
         }
-    }
-
-    public double calcularJornalCadete(int idCadete){
-        double monto=0;
-        foreach (var repartidor in this.listaCadetes)
-        {
-            if (repartidor.Id==idCadete)
-            {
-                monto = repartidor.calcularJornal();
-            }
-        }
-        return monto;
-    }
-
-    public void mostrarInforme(){
-        int totalPedidos=0;
-        int pedidosPorCadete=0;
-        double montoTotal=0;
-        foreach (var repartidor in listaCadetes)
-        {
-            System.Console.WriteLine("cant envios del cadete nro" + repartidor.Id+": " + repartidor.ListadoPedidos1.Count());
-            totalPedidos += repartidor.ListadoPedidos1.Count();
-            montoTotal += repartidor.calcularJornal();
-        }
-        System.Console.WriteLine("cant total de pedidos: "+ totalPedidos);
-        System.Console.WriteLine("Promedio de pedidos x cadete: " + (totalPedidos/this.listaCadetes.Count()));
-        System.Console.WriteLine("Monto total: "+ montoTotal);
     }
 }
