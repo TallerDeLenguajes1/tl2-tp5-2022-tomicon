@@ -11,6 +11,11 @@ public class Pedido
     private Estados estado;
     private int idCadete;
 
+    public Pedido()
+    {
+        Nro = ++autonum;
+    }
+
     public Pedido(string obs, Estados estado, int idCadete, string nombre, string direccion, string telefono, string datosDirec)
     {
         Nro = ++autonum;
