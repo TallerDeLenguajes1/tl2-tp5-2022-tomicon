@@ -15,6 +15,7 @@ public class Cadeteria
         this.nombre = nombre;
         this.telefono = telefono;
         this.ListaCadetes = new List<Cadete>();
+        this.listaPedidos = new List<Pedido>();
     }
 
     public void agregarCadete(string nombre, string direccion, string telefono)
