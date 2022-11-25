@@ -62,9 +62,10 @@ namespace Cadeteria.Controllers
         }
 
         [HttpPost]
-        public IActionResult AltaPedido(string nombUsuario, string apeUsuario, string telUsuario, string direcUsuario, string datosDirec)
+        public IActionResult AltaPedido(PedidoViewModel viewModel)
         {
-            HelperDeArchivos.insertarPedido(nombUsuario,apeUsuario,telUsuario,direcUsuario,datosDirec);
+            var pedido= PedidoMapper.mappearAPedido(viewModel);
+            HelperDeArchivos.insertarPedido(pedido);
             return RedirectToAction("Index");
         }
     }

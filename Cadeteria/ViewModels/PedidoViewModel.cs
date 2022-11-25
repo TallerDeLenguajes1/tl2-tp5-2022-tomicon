@@ -3,6 +3,7 @@ using  System.ComponentModel.DataAnnotations;
 
 public class PedidoViewModel
 {
+    int numPedido;
     [Required]
     [StringLength(50)]
     string nombreUsuario;
@@ -26,9 +27,22 @@ public class PedidoViewModel
     public string TelefonoUsuario { get => telefonoUsuario; set => telefonoUsuario = value; }
     public string DatosDireccion { get => datosDireccion; set => datosDireccion = value; }
     public string Observaciones { get => observaciones; set => observaciones = value; }
+    public int NumPedido { get => numPedido; set => numPedido = value; }
 
     public PedidoViewModel()
     {
-
+                if (File.Exists("Pedidos.csv"))
+        {
+            var lineas= File.ReadAllLines(@"Pedidos.csv");
+            if (lineas.Length==0)
+            {
+                this.NumPedido=0;
+            } else
+            {
+                var infoLineas= lineas[lineas.Length -1 ].Split(";");
+                int num = Convert.ToInt32(infoLineas[0]) + 1;
+                this.NumPedido= num;  
+            }
+        }
     }
 }

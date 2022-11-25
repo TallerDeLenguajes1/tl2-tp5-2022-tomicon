@@ -1,3 +1,5 @@
+@using Cadeteria.ViewModels;
+@model PedidoViewModel;
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,16 +16,16 @@
     </header>
     <main>
         <form asp-controller="Cadeteria" asp-action="AltaPedido" method="POST">
-            <label for="nombCadete">Nombre: </label>
-            <input type="text" id="nombUsuario" name="nombUsuario" placeholder="Nombre" required>
-            <label for="apeUsuario">Apellido: </label>
-            <input type="text" id="apeUsuario" name="apeUsuario" placeholder="Apellido" required>
-            <label for="telUsuario">Telefono: </label>
-            <input type="tel" id="telUsuario" name="telUsuario" placeholder="3811111111" required>
-            <label for="direcUsuario">Direccion: </label>
-            <input type="text" id="direcUsuario" name="direcUsuario" placeholder="Av Mate de Luna 1234" required>
-            <label for="datosDirec">Datos extra de la Direccion: </label>
-            <textarea name="datosDirec" id="datosDirec" cols="30" rows="10"></textarea>
+            <label asp-for="@Model.NombreUsuario">Nombre: </label> 
+            <input type="text" asp-for="@Model.NombreUsuario" placeholder="Nombre" required>
+            <label asp-for="@Model.ApellidoUsuario">Apellido: </label> 
+            <input type="text" asp-for="@Model.ApellidoUsuario" placeholder="Apellido" required>
+            <label asp-for="@Model.TelefonoUsuario">Telefono: </label>  
+            <input type="tel" asp-for="@Model.TelefonoUsuario" placeholder="3811111111" required>
+            <label asp-for="@Model.Direccion">Direccion: </label> 
+            <input type="text" asp-for="@Model.Direccion" placeholder="Av Mate de Luna 1234" required>
+            <label asp-for="@Model.ApellidoUsuario">Datos extra de la Direccion: </label> 
+            <textarea asp-for="@Model.ApellidoUsuario" cols="30" rows="10"></textarea>
             <input type="submit" value="Cargar Pedido">
         </form>
     </main>

@@ -57,10 +57,10 @@ public static class HelperDeArchivos
         System.IO.File.WriteAllLines("Cadetes.csv", lineasCadetes);
     }
 
-    public static void insertarPedido(string nombUsuario, string apeUsuario, string telUsuario, string direcUsuario, string datosDirec)
+    public static void insertarPedido(Pedido nuevo)
     {
-        Pedido nuevo = new Pedido();
-        var linea = $"{Convert.ToString(nuevo.Nro)};{nombUsuario};{apeUsuario};{telUsuario};{direcUsuario};{datosDirec}";
+        var nombYape= nuevo.Usuario.Nombre.Split(" ");
+        var linea = $"{Convert.ToString(nuevo.Nro)};{nombYape[0]};{nombYape[1]};{nuevo.Usuario.Telefono};{nuevo.Usuario.Direccion};{nuevo.Usuario.DatosReferenciaDireccion}";
         string nombreArchivo= "Pedidos.csv";
         bool archivoExiste= System.IO.File.Exists(nombreArchivo);
         StreamWriter escritor = System.IO.File.AppendText(nombreArchivo);
