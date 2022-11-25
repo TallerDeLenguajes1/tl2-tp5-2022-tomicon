@@ -1,6 +1,21 @@
 using Cadeteria.Models;
 public static class HelperDeArchivos
 {
+    public static void insertarCadete(string nombCadete, string apeCadete, string telCadete)
+    {
+        Cadete nuevo = new Cadete(" ", " ", " "); //solo quiero obtener el id autonumerico
+        string linea= $"{nuevo.Id};{nombCadete};{apeCadete};{telCadete}";
+        string nombreArchivo= "Cadetes.csv";
+        bool archivoExiste= System.IO.File.Exists(nombreArchivo);
+        StreamWriter escritor = System.IO.File.AppendText(nombreArchivo);
+        if (!archivoExiste)
+        {
+            escritor.WriteLine("ID;Nombre;Apellido;Telefono");
+        }
+        escritor.WriteLine(linea);
+        escritor.Close();
+    }
+
     public static List<Cadete> leerCadetes()
     {
         string nombreArchivo = "Cadetes.csv";
@@ -39,5 +54,20 @@ public static class HelperDeArchivos
         }
         System.IO.File.Delete("Cadetes.csv");
         System.IO.File.WriteAllLines("Cadetes.csv", lineasCadetes);
+    }
+
+    public static void insertarPedido(string nombUsuario, string apeUsuario, string telUsuario, string direcUsuario, string datosDirec)
+    {
+        Pedido nuevo = new Pedido();
+        var linea = $"{Convert.ToString(nuevo.Nro)};{nombUsuario};{apeUsuario};{telUsuario};{direcUsuario};{datosDirec}";
+        string nombreArchivo= "Pedidos.csv";
+        bool archivoExiste= System.IO.File.Exists(nombreArchivo);
+        StreamWriter escritor = System.IO.File.AppendText(nombreArchivo);
+        if (!archivoExiste)
+        {
+            escritor.WriteLine("Nro;NombreCliente;ApeCliente;TelCliente;Direc;DatosDirec");
+        }
+        escritor.WriteLine(linea);
+        escritor.Close();
     }
 }
