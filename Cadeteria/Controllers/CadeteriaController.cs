@@ -22,9 +22,10 @@ namespace Cadeteria.Controllers
         }
 
         [HttpPost]
-        public IActionResult AltaCadete(string nombCadete, string apeCadete, string telCadete)
+        public IActionResult AltaCadete(CadeteViewModel viewModel)
         {
-            HelperDeArchivos.insertarCadete(nombCadete, apeCadete, telCadete);
+            var cadete = CadeteMapper.mappearACadete(viewModel);
+            HelperDeArchivos.insertarCadete(cadete);
             return View();
         }
 

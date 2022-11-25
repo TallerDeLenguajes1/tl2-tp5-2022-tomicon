@@ -6,7 +6,7 @@ public static class CadeteMapper
     {
         Cadete cadete = new Cadete();
         cadete.Id = viewmodel.Id;
-        cadete.Nombre = viewmodel.Nombre;
+        cadete.Nombre = viewmodel.Nombre + " " + viewmodel.Apellido;
         cadete.Telefono = viewmodel.Telefono;
         return cadete;
     }
@@ -15,7 +15,9 @@ public static class CadeteMapper
     {
         CadeteViewModel viewModel = new CadeteViewModel();
         viewModel.Id = cadete.Id;
-        viewModel.Nombre = cadete.Nombre;
+        var nombYApe= cadete.Nombre.Split(" ");
+        viewModel.Nombre = nombYApe[0];
+        viewModel.Apellido = nombYApe[1];
         viewModel.Telefono = cadete.Telefono;
         return viewModel;
     }

@@ -1,10 +1,11 @@
 using Cadeteria.Models;
+using Cadeteria.ViewModels;
 public static class HelperDeArchivos
 {
-    public static void insertarCadete(string nombCadete, string apeCadete, string telCadete)
+    public static void insertarCadete(Cadete cadete)
     {
-        Cadete nuevo = new Cadete(" ", " ", " "); //solo quiero obtener el id autonumerico
-        string linea= $"{nuevo.Id};{nombCadete};{apeCadete};{telCadete}";
+        var nombYape= cadete.Nombre.Split(" ");
+        string linea= $"{cadete.Id};{nombYape[0]};{nombYape[1]};{cadete.Telefono}";
         string nombreArchivo= "Cadetes.csv";
         bool archivoExiste= System.IO.File.Exists(nombreArchivo);
         StreamWriter escritor = System.IO.File.AppendText(nombreArchivo);

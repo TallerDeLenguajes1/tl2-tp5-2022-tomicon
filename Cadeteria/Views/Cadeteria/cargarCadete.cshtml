@@ -1,3 +1,5 @@
+@using Cadeteria.ViewModels;
+@model CadeteViewModel;
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,12 +15,12 @@
     </header>
     <main>
         <form asp-controller="Cadeteria" asp-action="AltaCadete" method="POST">
-            <label for="nombCadete">Nombre: </label>
-            <input type="text" id="nombCadete" name="nombCadete" placeholder="Nombre">
-            <label for="apeCadete">Apellido: </label>
-            <input type="text" id="apeCadete" name="apeCadete" placeholder="Apellido">
-            <label for="telCadete">Telefono: </label>
-            <input type="tel" id="telCadete" name="telCadete" placeholder="3811111111">
+            <label asp-for="@Model.Nombre">Nombre: </label>
+            <input asp-for="@Model.Nombre" type="text" placeholder="Nombre">
+            <label asp-for="@Model.Apellido">Apellido: </label>
+            <input asp-for="@Model.Apellido" type="text" placeholder="Apellido">
+            <label asp-for="@Model.Telefono">Telefono: </label>
+            <input asp-for="@Model.Telefono" type="tel" placeholder="3811111111">
             <input type="submit" value="Cargar Cadete">
         </form>
     </main>

@@ -28,11 +28,10 @@
             @{
                 foreach (var cadete in @Model)
                 {
-                    var nombre = @cadete.Nombre.Split(" ");
                     <tr>
                         <td>@cadete.Id</td>
-                        <td>@nombre[0]</td>
-                        <td>@nombre[1]</td>
+                        <td>@cadete.Nombre</td>
+                        <td>@cadete.Apellido</td>
                         <td>@cadete.Telefono</td>
                         <td><a href='@("bajaCadete?idCadete=" + cadete.Id.ToString())' class="link-danger">Eliminar cadete</a></td>
                     </tr>
