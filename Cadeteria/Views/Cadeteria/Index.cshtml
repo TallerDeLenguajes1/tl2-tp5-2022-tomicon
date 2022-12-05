@@ -33,7 +33,7 @@
                         <td>@cadete.Nombre</td>
                         <td>@cadete.Apellido</td>
                         <td>@cadete.Telefono</td>
-                        <td><a href='@("bajaCadete?idCadete=" + cadete.Id.ToString())' class="link-danger">Eliminar cadete</a></td>
+                        <td><a asp-controller="Cadeteria" asp-action="bajaCadete" asp-route-id="@cadete.Id">Eliminar</a></td>
                     </tr>
                 }
             }

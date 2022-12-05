@@ -46,7 +46,7 @@ public static class HelperDeArchivos
             {
                 var informacion = linea.Split(";");
                 string id = informacion[0];
-                if (id != idCadete.Trim())
+                if (id != idCadete)
                 {
                     string datosCadete = $"{informacion[0]};{informacion[1]};{informacion[2]};{informacion[3]}";
                     lineasCadetes.Add(datosCadete);

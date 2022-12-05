@@ -50,9 +50,9 @@ namespace Cadeteria.Controllers
         }
 
         [HttpGet]
-        public IActionResult bajaCadete(string idCadete)
+        public IActionResult bajaCadete(string Id)
         {
-            HelperDeArchivos.eliminarCadete(idCadete);
+            HelperDeArchivos.eliminarCadete(Id);
             return RedirectToAction("Index");
         }
 
