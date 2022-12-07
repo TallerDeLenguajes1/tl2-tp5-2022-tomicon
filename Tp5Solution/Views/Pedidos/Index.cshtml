@@ -1,0 +1,52 @@
+﻿@using Tp5Solution.ViewModels;
+@model List<PedidoViewModel>;
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Tomas Consoli">
+        <link rel="stylesheet" href="~/css/lib/bootstrap/dist/css/bootstrap.min.css">
+        <script src="~/css/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        <title>Listado Pedidos</title>
+    </head>
+    <body>
+        <main>
+            <section>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Numero</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Telefono</th>
+                                <th scope="col">Direccion</th>
+                                <th scope="col">Datos-Direccion</th>
+                                <th scope="col">Observaciones</th>
+                                <th scope="col">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var pedido in @Model)
+                                {
+                                    <tr>
+                                        <td>@pedido.NumPedido</td>
+                                        <td>@pedido.NombreUsuario</td>
+                                        <td>@pedido.ApellidoUsuario</td>
+                                        <td>@pedido.TelefonoUsuario</td>
+                                        <td>@pedido.Direccion</td>
+                                        <td>@pedido.DatosDireccion</td>
+                                        <td>@pedido.Observaciones</td>
+                                        <td><a asp-controller="Pedidos" asp-action="Delete" asp-route-id="@pedido.NumPedido">Eliminar</a></td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+            </section>
+        </main>
+    </body>
+    </html>

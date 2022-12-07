@@ -1,0 +1,51 @@
+﻿@model Tp5Solution.ViewModels.PedidoViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Crear</h1>
+
+<h2>Pedido</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AltaPedido">
+            <div class="form-group">
+                <label asp-for="@Model.NombreUsuario" class="control-label"></label>
+                <input type="text" asp-for="@Model.NombreUsuario" class="form-control" placeholder="Nombre" required/>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.ApellidoUsuario" class="control-label">Apellido: </label> 
+                <input type="text" asp-for="@Model.ApellidoUsuario" class="form-control" placeholder="Apellido" required>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.TelefonoUsuario" class="control-label">Telefono: </label>  
+                <input type="tel" asp-for="@Model.TelefonoUsuario" class="form-control" placeholder="3811111111" required>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Direccion" class="control-label">Direccion: </label> 
+                <input type="text" asp-for="@Model.Direccion" class="form-control" placeholder="Av Mate de Luna 1234" required>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.DatosDireccion" class="control-label">Datos extra de la Direccion: </label> 
+                <input type="text" asp-for="@Model.DatosDireccion" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Observaciones" class="control-label">Observaciones: </label>
+                <input asp-for="@Model.Observaciones" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear pedido" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Listar pedidos</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
